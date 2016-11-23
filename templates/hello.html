@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <title>Boogle</title>
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body class="boogle" onload="document.body.style.opacity='1'">
+        <div class="container-fluid text-center">
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+                    <div class="well">
+                    <a href="/login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Log In</a>
+                        <p>Prijavljeni uporabniki</p>
+                </div>
+                </div>
+                <div class="col-sm-8 text-center">
+                <br/>
+                <br/>
+                <img class="slika-boogle" src="https://s13.postimg.org/pbhc3czlj/Boogle_logo_fake_for_learning_mala.jpg" alt="boogle">
+                <form method="get" action="http://www.google.com/search">
+                    <div>
+                        <input class="form-control" placeholder="Search Boogle or type URL" type="text" name="q" value="" style="width:600px;"/><br/>
+                        <input class="btn btn-default" type="submit" value="Google Search"/>
+                    </div>
+                </form>
+                    <div class="footer">
+                        <p class="text-muted">Copyright &copy; 2016 BojPav. All rights reserved.</p>
+                        <p class="text-muted">By using this site, you agree to the Terms of Service, Privacy Policy and Cookie Policy.</p>
+                    </div>
+                </div>
+            <div class="col-sm-2 sidenav">
+                <div class="well">
+                    <a href="/registracija" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Registriraj se</a>
+                    <p>Novi uporabniki</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>

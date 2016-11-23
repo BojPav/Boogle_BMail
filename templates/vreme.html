@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Poslana sporocila{% endblock title %}
+
+{% block vsebina %}
+
+    <a href="/prejeto" class="btn btn-default">Nazaj</a><br/>
+
+    <h2>Vreme v kraju {{ podatki.name }}</h2>
+
+            <p>Opis: {{ podatki.weather[0].description }}</p>
+            <p>Trenutna temperatura: {{ podatki.main.temp }} stopinj C</p>
+
+{% endblock vsebina %}

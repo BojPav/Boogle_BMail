@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Novo sporocilo{% endblock title %}
+
+{% block vsebina %}
+
+    {% if logiran %}
+
+    <h3>Vnesite podatke v input polja:</h3>
+
+    <form action="/novo-sporocilo" method="post">
+        <div class="input-group">
+            <span class="input-group-addon">Ime prejemnika:</span>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" name="prejemnik">
+        </div>
+        <br/>
+        <div class="input-group">
+            <span class="input-group-addon">Naslov:</span>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" name="naslov">
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="comment">Vsebina sporocila:</label>
+            <textarea class="form-control" rows="5" id="comment" name="vsebina"></textarea>
+        </div>
+        <br/>
+            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Poslji</button>
+    </form>
+
+    {% else %}
+
+        <h3>Hello stranger!</h3>
+
+        <p>Prosim prijavi se: <a href="/login">Login</a></p>
+
+    {% endif %}
+
+{% endblock vsebina %}
