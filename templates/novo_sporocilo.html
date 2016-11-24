@@ -26,6 +26,12 @@
         <br/>
             <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Poslji</button>
     </form>
+        <br/>
+        <h4>Registrirani uporabniki(ime prejemnika):</h4>
+
+        {% for ime in ime_uporabnika %}
+            <p>{{ ime.ime }}</p>
+        {% endfor %}
 
     {% else %}
 
