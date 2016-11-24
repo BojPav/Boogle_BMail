@@ -39,3 +39,9 @@ class Sporocilo(ndb.Model):
     id_posiljatelja = ndb.IntegerProperty()
     id_prejemnika = ndb.IntegerProperty()
     datum = ndb.DateTimeProperty(auto_now_add=True)
+
+    #def dobi_ime_posiljatelja(self):
+        #return Uporabnik.get_by_id(self.id_posiljatelja).ime
+
+    #def dobi_ime_prejemnika(self):
+        #return Uporabnik.get_by_id(self.id_prejemnika).ime

@@ -156,6 +156,8 @@ class PrejetaSporocilaHandler(BaseHandler): # implementirati se funkcijo za prik
 
         prejeta_sporocila = Sporocilo.gql("WHERE id_prejemnika =" + id_prijavljenega_uporabnika).fetch()    # dobimo prejeta sporocila uporabnika  iz baze s GET()
 
+        # posiljatelj = Uporabnik.get_by_id(id_prijavljenega_uporabnika).ime
+
         params = {"seznam_sporocil": prejeta_sporocila}
         return self.render_template("prejeta_sporocila.html", params=params)
 
@@ -168,6 +170,8 @@ class PoslanaSporocilaHandler(BaseHandler): # implementirati se funkcijo za prik
 
         poslana_sporocila = Sporocilo.gql("WHERE id_posiljatelja =" + id_prijavljenega_uporabnika).fetch()      # dobimo poslana sporocila uporabnika iz baze s GET()
 
+        #posiljatelj = Uporabnik.get_by_id(id_prijavljenega_uporabnika).ime
+
         params = {"seznam_sporocil": poslana_sporocila}
         return self.render_template("poslana_sporocila.html", params=params)
 
@@ -176,18 +180,20 @@ class WeatherHandler(BaseHandler):
     def get(self):
 
         url = "http://api.openweathermap.org/data/2.5/weather?q=Lljubljana&units=metric&appid=d23ef4ef1700cc9f89d46413ccdf2a96"
-
         result = urlfetch.fetch(url)
-
         podatki = json.loads(result.content)
-
         params = {"podatki": podatki}
 
         self.render_template("vreme.html", params)
 
 
+class LogoutHandler(BaseHandler):   # narediti log out funkcijo
+    def get(self):
+        self.redirect_to("main")
+
+
 app = webapp2.WSGIApplication([
-    webapp2.Route('/', MainHandler),
+    webapp2.Route('/', MainHandler, name="main"),
     webapp2.Route('/registracija', RegistracijaHandler),
     webapp2.Route('/login', LoginHandler),
     webapp2.Route('/prejeto', PrejetoHandler),
@@ -195,4 +201,5 @@ app = webapp2.WSGIApplication([
     webapp2.Route('/prejeta-sporocila', PrejetaSporocilaHandler),
     webapp2.Route('/poslana-sporocila', PoslanaSporocilaHandler),
     webapp2.Route('/vreme', WeatherHandler),
+    webapp2.Route('/logout', LogoutHandler),
 ], debug=True)

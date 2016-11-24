@@ -1,14 +1,38 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block title %}Poslana sporocila{% endblock title %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-{% block vsebina %}
+        <title>Main page</title>
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+<body class="vreme">
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+               <a href="/prejeto" class="btn btn-default">Nazaj</a><br/>
+            </div>
+            <div class="col-sm-8 text-center">
+               <h3>Vreme v kraju {{ podatki.name }}:</h3><br/>
 
-    <a href="/prejeto" class="btn btn-default">Nazaj</a><br/>
+        <p>Vreme: {{ podatki.weather[0].description }}</p>
+        <p>Trenutna temperatura: {{ podatki.main.temp }} &#x2103;</p>
+        <p>Najnizja temperatura: {{ podatki.main.temp_min }} &#x2103;</p>
+        <p>Najvisja temperatura: {{ podatki.main.temp_max }} &#x2103;</p>
+        <p>Vlaga: {{ podatki.main.humidity }} %</p>
+        <p>Veter: {{ podatki.wind.speed }} km/h</p>
 
-    <h2>Vreme v kraju {{ podatki.name }}</h2>
+            </div>
+        <div class="col-sm-2 sidenav">
+        </div>
+        </div>
+    </div>
 
-            <p>Opis: {{ podatki.weather[0].description }}</p>
-            <p>Trenutna temperatura: {{ podatki.main.temp }} stopinj C</p>
-
-{% endblock vsebina %}
+</body>
+</html>

@@ -47,12 +47,27 @@ slika:hover {
 }
 
 .footer {
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 300px;
+    position: fixed;
     bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    background-color: whitesmoke;
+    font-family: sans-serif;
+    color: dimgray;
+    font-size: 13px;
+    font-weight: lighter;
+    text-align: center;
 }
 .container-fluid {
     margin-top: 10px;
+}
+
+.vreme {
+    background-image: url("http://www.kisforkani.com/wp-content/uploads/2015/09/k-is-for-kani-ljubljana-slovenia-tourism-travel-diary-guide-tips-things-to-do-blog-2-110.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
 }
