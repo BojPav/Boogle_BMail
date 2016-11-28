@@ -4,22 +4,23 @@
 
 {% block vsebina %}
 
-        <h2>Prejeta sporocila:</h2>
-        <br/>
+    <h2>Prejeta sporocila:</h2>
+    <br/>
         {% for sporocilo in seznam_sporocil %}
 
             <div class="col-md-8 col-centered">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title"><strong>Od:</strong> {{ sporocilo.id_posiljatelja }}, <strong>naslov:</strong> {{ sporocilo.naslov_sporocila }}, <strong>datum sporocila:</strong> {{ sporocilo.datum }}</h2>
+                    <h2 class="panel-title"><strong>Od: </strong>{{ sporocilo.ime_posiljatelja }} &nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>Naslov:</strong> {{ sporocilo.naslov_sporocila }} &nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>Datum sporocila:</strong> {{ sporocilo.datum.day }}.{{ sporocilo.datum.month }}.{{ sporocilo.datum.year }}.
+                        <strong>ob:</strong> {{ sporocilo.datum.hour }}:{{ sporocilo.datum.minute }}h</h2>
                 </div>
                 <div class="panel-body">
-                {{ sporocilo.vsebina_sporocila }}
+                    <em>{{ sporocilo.vsebina_sporocila }}</em>
                 </div>
             </div>
             </div>
-
-            <!--<p>{{ sporocilo.id_posiljatelja }}, {{ sporocilo.id_prejemnika }}, {{ sporocilo.naslov_sporocila }}, {{ sporocilo.vsebina_sporocila }}, {{ sporocilo.key.id() }}, {{ sporocilo.datum }}</p>-->
 
         {% endfor %}
 

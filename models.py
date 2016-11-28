@@ -38,6 +38,8 @@ class Sporocilo(ndb.Model):
     vsebina_sporocila = ndb.StringProperty()
     id_posiljatelja = ndb.IntegerProperty()
     id_prejemnika = ndb.IntegerProperty()
+    ime_posiljatelja = ndb.StringProperty()
+    ime_prejemnika = ndb.StringProperty()
     datum = ndb.DateTimeProperty(auto_now_add=True)
 
     #def dobi_ime_posiljatelja(self):

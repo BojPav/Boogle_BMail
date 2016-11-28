@@ -102,7 +102,7 @@ class LoginHandler(BaseHandler):
 
         if uporabnik:
 
-            if Uporabnik.preveri_geslo(original_geslo=geslo, uporabnik=uporabnik):
+            if Uporabnik.preveri_geslo(original_geslo=geslo, uporabnik=uporabnik):  # ce uporabnik obstaja redirecta na main page/prejeto
                 self.ustvari_cookie(uporabnik=uporabnik)
                 self.redirect("/prejeto")
             else:
@@ -128,13 +128,15 @@ class NovoSporociloHandler(BaseHandler):    # potrebno implementirati if v post 
         return self.render_template("novo_sporocilo.html", params=params)
 
     def post(self):
-
         cookie_value = self.request.cookies.get("uid")  # po cookie-u dobimo ID posiljatelja
         posiljatelj_id, _, _ = cookie_value.split(":")  # po cookie-u dobimo ID posiljatelja
-        posiljatelj_id = int(posiljatelj_id)    # po cookie-u dobimo ID posiljatelja
+        posiljatelj_id = int(posiljatelj_id)  # po cookie-u dobimo ID posiljatelja
+        posiljatelj = Uporabnik.get_by_id(posiljatelj_id).ime  # po ID-ju dobimo ime posiljatelja !!!
 
         ime_uporabnika = self.request.get("prejemnik")
-        prejemnik = Uporabnik.gql("WHERE ime ='" + ime_uporabnika + "'").get()  # dobimo ime uporabnika (prejemnika) iz baze s GET()
+        prejemnik = Uporabnik.gql(
+            "WHERE ime ='" + ime_uporabnika + "'").get()  # dobimo ime uporabnika (prejemnika) iz baze s GET()
+
         prejemnik = prejemnik.key.id()  # ID prejemnika
         naslov = self.request.get("naslov")
         vsebina = self.request.get("vsebina")
@@ -142,21 +144,19 @@ class NovoSporociloHandler(BaseHandler):    # potrebno implementirati if v post 
 
         vsebina = cgi.escape(vsebina)  # prepreci javascript injection
 
-        sporocilo = Sporocilo(naslov_sporocila=naslov, vsebina_sporocila=vsebina, id_posiljatelja=posiljatelj_id, id_prejemnika=prejemnik)
+        sporocilo = Sporocilo(naslov_sporocila=naslov, vsebina_sporocila=vsebina, id_posiljatelja=posiljatelj_id,
+                              id_prejemnika=prejemnik, ime_posiljatelja=posiljatelj, ime_prejemnika=ime_uporabnika)
         sporocilo.put()
 
         return self.write("Vspesno ste poslali sporocilo...")
 
-
-class PrejetaSporocilaHandler(BaseHandler): # implementirati se funkcijo za prikazovanje imena posiljatelja namesto ID
+class PrejetaSporocilaHandler(BaseHandler):
     def get(self):
 
         cookie_value = self.request.cookies.get("uid")      # po cookie-u dobimo ID posiljatelja
         id_prijavljenega_uporabnika, _, _ = cookie_value.split(":")     # po cookie-u dobimo ID posiljatelja
 
         prejeta_sporocila = Sporocilo.gql("WHERE id_prejemnika =" + id_prijavljenega_uporabnika).fetch()    # dobimo prejeta sporocila uporabnika  iz baze s GET()
-
-        # posiljatelj = Uporabnik.get_by_id(id_prijavljenega_uporabnika).ime
 
         params = {"seznam_sporocil": prejeta_sporocila}
         return self.render_template("prejeta_sporocila.html", params=params)
@@ -170,8 +170,6 @@ class PoslanaSporocilaHandler(BaseHandler): # implementirati se funkcijo za prik
 
         poslana_sporocila = Sporocilo.gql("WHERE id_posiljatelja =" + id_prijavljenega_uporabnika).fetch()      # dobimo poslana sporocila uporabnika iz baze s GET()
 
-        #posiljatelj = Uporabnik.get_by_id(id_prijavljenega_uporabnika).ime
-
         params = {"seznam_sporocil": poslana_sporocila}
         return self.render_template("poslana_sporocila.html", params=params)
 
@@ -179,9 +177,9 @@ class PoslanaSporocilaHandler(BaseHandler): # implementirati se funkcijo za prik
 class WeatherHandler(BaseHandler):
     def get(self):
 
-        url = "http://api.openweathermap.org/data/2.5/weather?q=Lljubljana&units=metric&appid=d23ef4ef1700cc9f89d46413ccdf2a96"
-        result = urlfetch.fetch(url)
-        podatki = json.loads(result.content)
+        url = "http://api.openweathermap.org/data/2.5/weather?q=Lljubljana&units=metric&appid=d23ef4ef1700cc9f89d46413ccdf2a96"     # API stran za vreme
+        result = urlfetch.fetch(url)    # preko urlfetch dobimo result v json formatu
+        podatki = json.loads(result.content)    # preko json.loads dobimo content
         params = {"podatki": podatki}
 
         self.render_template("vreme.html", params)
