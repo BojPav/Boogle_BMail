@@ -6,28 +6,28 @@
 
     {% if logiran %}
 
-    <h3>Vnesite podatke v input polja:</h3>
+    <h3>Fill in the input fields:</h3>
 
     <form action="/novo-sporocilo" method="post">
         <div class="input-group">
-            <span class="input-group-addon">Ime prejemnika:</span>
+            <span class="input-group-addon">Recipient Name:</span>
             <input type="text" class="form-control" aria-describedby="basic-addon1" name="prejemnik">
         </div>
         <br/>
         <div class="input-group">
-            <span class="input-group-addon">Naslov:</span>
+            <span class="input-group-addon">Message Title:</span>
             <input type="text" class="form-control" aria-describedby="basic-addon1" name="naslov">
         </div>
         <br/>
         <div class="form-group">
-            <label for="comment">Vsebina sporocila:</label>
+            <label for="comment">Message:</label>
             <textarea class="form-control" rows="5" id="comment" name="vsebina"></textarea>
         </div>
         <br/>
-            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Poslji</button>
+            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send</button>
     </form>
         <br/>
-        <h4>Registrirani uporabniki(ime prejemnika):</h4>
+        <h4>Registered Users(Recipient Name):</h4>
 
         {% for ime in ime_uporabnika %}
             <p>{{ ime.ime }}</p>

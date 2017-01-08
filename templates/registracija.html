@@ -3,18 +3,18 @@
 {% block title %}Registracija{% endblock title %}
 
 {% block vsebina %}
-    <a href="/" class="btn btn-default">Nazaj na Boogle</a><br/>
+    <a href="/" class="btn btn-default">Back to Boogle</a><br/>
 
-    <h2>Registracija novega uporabnika</h2>
+    <h2>Create new account</h2>
 
     <form action="/registracija" method="post">
         <div class="input-group">
-            <span class="input-group-addon">Ime:</span>
+            <span class="input-group-addon">Name:</span>
             <input type="text" class="form-control" aria-describedby="basic-addon1" name="ime">
         </div>
         <br/>
         <div class="input-group">
-            <span class="input-group-addon">Priimek:</span>
+            <span class="input-group-addon">Surname:</span>
             <input type="text" class="form-control" aria-describedby="basic-addon1" name="priimek">
         </div>
         <br/>
@@ -24,15 +24,15 @@
         </div>
         <br/>
         <div class="input-group">
-            <span class="input-group-addon">Geslo:</span>
+            <span class="input-group-addon">Password:</span>
             <input type="password" class="form-control" aria-describedby="basic-addon1" name="geslo">
         </div>
         <br/>
         <div class="input-group">
-            <span class="input-group-addon">Ponovno geslo:</span>
+            <span class="input-group-addon">Retype password:</span>
             <input type="password" class="form-control" aria-describedby="basic-addon1" name="ponovno_geslo">
         </div>
         <br/>
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Registriraj se</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</button>
     </form>
 {% endblock vsebina %}

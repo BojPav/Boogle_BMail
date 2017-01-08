@@ -9,24 +9,24 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-        <title>Main page</title>
+        <title>Weather</title>
         <link rel="stylesheet" href="/assets/css/style.css">
     </head>
 <body class="vreme">
     <div class="container-fluid text-center">
         <div class="row content">
             <div class="col-sm-2 sidenav">
-               <a href="/prejeto" class="btn btn-default">Nazaj</a><br/>
+               <a href="/prejeto" class="btn btn-default">Go Back</a><br/>
             </div>
             <div class="col-sm-8 text-center">
-               <h3>Vreme v kraju {{ podatki.name }}:</h3><br/>
+               <h3>Weather in the city {{ podatki.name }}:</h3><br/>
 
-        <p>Vreme: {{ podatki.weather[0].description }}</p>
-        <p>Trenutna temperatura: {{ podatki.main.temp }} &#x2103;</p>
-        <p>Najnizja temperatura: {{ podatki.main.temp_min }} &#x2103;</p>
-        <p>Najvisja temperatura: {{ podatki.main.temp_max }} &#x2103;</p>
-        <p>Vlaga: {{ podatki.main.humidity }} %</p>
-        <p>Veter: {{ podatki.wind.speed }} km/h</p>
+        <p>Weather: {{ podatki.weather[0].description }}</p>
+        <p>Current temperature: {{ podatki.main.temp }} &#x2103;</p>
+        <p>Lowest temperature: {{ podatki.main.temp_min }} &#x2103;</p>
+        <p>Highest temperature: {{ podatki.main.temp_max }} &#x2103;</p>
+        <p>Humidity: {{ podatki.main.humidity }} %</p>
+        <p>Wind: {{ podatki.wind.speed }} km/h</p>
 
             </div>
         <div class="col-sm-2 sidenav">

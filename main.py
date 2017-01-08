@@ -87,7 +87,7 @@ class RegistracijaHandler(BaseHandler):
             Uporabnik.ustvari(ime=ime, priimek=priimek, email=email, original_geslo=geslo)
             self.render_template("prejeto.html")
         else:
-            return self.write("Napacno ponovno geslo...")
+            return self.write("Wrong retyped password...")
 
 
 class LoginHandler(BaseHandler):
@@ -106,7 +106,7 @@ class LoginHandler(BaseHandler):
                 self.ustvari_cookie(uporabnik=uporabnik)
                 self.redirect("/prejeto")
             else:
-                return self.write("Napacno geslo...vrni se nazaj in poskusi se enkrat")
+                return self.write("Wrong password...go back and try again")
         else:
             return self.render_template("registracija.html")
         #if Uporabnik.preveri_geslo(original_geslo=geslo, uporabnik=uporabnik):
@@ -148,7 +148,7 @@ class NovoSporociloHandler(BaseHandler):    # potrebno implementirati if v post 
                               id_prejemnika=prejemnik, ime_posiljatelja=posiljatelj, ime_prejemnika=ime_uporabnika)
         sporocilo.put()
 
-        return self.write("Vspesno ste poslali sporocilo...")
+        return self.write("You have successfully sent a message ...click back on your browser")
 
 class PrejetaSporocilaHandler(BaseHandler):
     def get(self):

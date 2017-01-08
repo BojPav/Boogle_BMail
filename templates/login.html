@@ -4,14 +4,14 @@
 
 {% block vsebina %}
 
-        <h1>Login / prijava uporabnika</h1>
+        <h1>Login</h1>
 
         <form action="/login" method="post">
-            <input class="form-control" placeholder="Vnesi svoj email" name="email" type="email"> <br>
-            <input class="form-control" placeholder="Vnesi svoje geslo" name="geslo" type="password"> <br>
+            <input class="form-control" placeholder="Enter your email" name="email" type="email"> <br>
+            <input class="form-control" placeholder="Enter your password" name="geslo" type="password"> <br>
 
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Logiraj se</button> ali
-            <a href="/registracija" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Registriraj se</a>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> LogIn</button> or
+            <a href="/registracija" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register</a>
         </form>
 
 {% endblock vsebina %}
